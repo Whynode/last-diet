@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { ColorProvider, useColors } from './hooks/useColors';
 import { ProgressProvider, useProgress } from './context/ProgressContext';
 import { BerandaScreen } from './screens/Beranda';
+import { DietScreen } from './screens/Diet';
+import { WorkoutScreen } from './screens/Workout';
+import { PlankScreen } from './screens/Plank';
 import { NailongStatic, type NailongVariant } from './components/Nailong';
 import './App.css';
 
@@ -44,14 +47,9 @@ function AppLayout() {
   return (
     <div className="app">
       {activeTab === 'beranda' && <BerandaScreen />}
-      
-      {/* Placeholder for other tabs */}
-      {activeTab !== 'beranda' && (
-        <div className="placeholder">
-          <h2>{tabs.find(t => t.id === activeTab)?.label}</h2>
-          <p>Coming soon...</p>
-        </div>
-      )}
+      {activeTab === 'diet' && <DietScreen />}
+      {activeTab === 'workout' && <WorkoutScreen />}
+      {activeTab === 'plank' && <PlankScreen />}
 
       {/* Tab Bar - matching mobile style */}
       <div 

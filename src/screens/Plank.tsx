@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { AppHeader } from '../components/AppHeader';
 import { NailongStatic } from '../components/Nailong';
 import { ProgressBar } from '../components/ProgressBar';
@@ -51,15 +51,21 @@ export function PlankScreen() {
   const reached = seconds >= target;
 
   return (
-    <div className="screen" style={{ backgroundColor: colors.background }}>
+    <div className="screen" style={{ 
+      minHeight: '100vh',
+      backgroundColor: '#FFF7FB',
+      paddingBottom: 130,
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
       <AppHeader rightLabel="THE PLANK MASTER" />
       
-      <div className="scroll-content">
-        <div className="intro">
-          <h2 style={{ color: colors.foreground }}>
+      <div className="scroll-content" style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <div className="intro" style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 4 }}>
+          <h2 style={{ color: '#4A1230', fontFamily: 'Inter', fontWeight: 700, fontSize: 20 }}>
             The Plank Master
           </h2>
-          <p style={{ color: colors.mutedForeground }}>
+          <p style={{ color: '#8B5A6B', fontFamily: 'Inter', fontWeight: 500, fontSize: 12 }}>
             {getWeekLabel(currentDay)} · Target {target} detik
           </p>
         </div>
