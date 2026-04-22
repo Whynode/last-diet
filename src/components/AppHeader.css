@@ -1,0 +1,58 @@
+/* AppHeader - matching mobile app style with blur effect */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 12px 14px 8px;
+  border-bottom: 1px solid rgba(196, 54, 112, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.app-header-tint {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 247, 251, 0.72);
+  pointer-events: none;
+}
+
+.app-header-row {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.app-header-brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.app-header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.app-header-title {
+  color: #C43670;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  flex-shrink: 1;
+}
+
+.app-header-label {
+  color: #8B5A6B;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.4px;
+}

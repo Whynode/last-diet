@@ -1,0 +1,5 @@
+/* ProgressBar - matching mobile app style */
+.progress-bar {
+  width: 100%;
+  overflow: hidden;
+}

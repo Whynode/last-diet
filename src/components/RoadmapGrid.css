@@ -1,0 +1,39 @@
+/* RoadmapGrid - matching mobile app style */
+.roadmap-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.roadmap-cell {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.roadmap-cell:hover {
+  transform: scale(1.05);
+}
+
+.roadmap-cell:active {
+  transform: scale(0.95);
+}
+
+.roadmap-day {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.roadmap-target {
+  font-weight: 500;
+  font-size: 10px;
+  margin-top: 2px;
+}

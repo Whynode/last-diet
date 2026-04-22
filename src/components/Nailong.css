@@ -1,0 +1,69 @@
+/* Nailong character animations - matching mobile app */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.nailong {
+  display: inline-block;
+  animation: bounce 0.7s ease-in-out infinite;
+}
+
+.nailong.bounce {
+  animation-name: bounce;
+}
+
+.nailong.spin {
+  animation-name: spin;
+}
+
+.nailong.bounce.spin {
+  animation: bounce 0.7s ease-in-out infinite, spin 2s ease-in-out infinite;
+}
+
+.nailong-track {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nailong-track-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #FBD9E5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.nailong-track-fill {
+  height: 100%;
+  background-color: #F283AF;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.nailong-track-mascot {
+  position: absolute;
+  top: 0;
+}
