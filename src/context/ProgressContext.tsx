@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { TOTAL_DAYS, getPlankTargetForDay } from '../lib/constants';
+import { openWhatsApp, formatWhatsAppMessage } from '../lib/whatsapp';
 
 type ProgressLog = {
   whitelist: string[];
@@ -39,6 +40,9 @@ const defaultState: ProgressState = {
 
 const ProgressContext = createContext<ProgressContextType | null>(null);
 
+// WhatsApp number for Mas Arya
+const MAS_ARYA_PHONE = '6281318216205';
+
 export function ProgressProvider({ children }: { children: ReactNode }) {
   const [currentDay, setCurrentDay] = useState(1);
   const [log, setLog] = useState<ProgressLog>(defaultLog);
@@ -77,7 +81,6 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   };
 
   const isDayComplete = (day: number) => {
-    // Simplified - check if current day is finalized
     const savedFinalized = localStorage.getItem(`diet-day-${day}-finalized`);
     return savedFinalized === 'true';
   };
@@ -130,7 +133,22 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   };
 
   const finalizeDay = () => {
+    // Mark as completed
     localStorage.setItem(`diet-day-${currentDay}-finalized`, 'true');
+    
+    // Format message
+    const message = formatWhatsAppMessage({
+      day: currentDay,
+      whitelist: log.whitelist,
+      workout: log.workout,
+      plankBest: log.plankBest,
+      weight: state.weights[state.weights.length - 1]?.kg,
+    });
+    
+    // Open WhatsApp with pre-filled message
+    openWhatsApp(MAS_ARYA_PHONE, message);
+    
+    // Move to next day
     if (currentDay < TOTAL_DAYS) {
       setCurrentDay(prev => prev + 1);
     }
@@ -152,6 +170,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         setPlankBest,
         setWeight,
         finalizeDay,
+        syncToBackend: async () => {},
       }}
     >
       {children}
